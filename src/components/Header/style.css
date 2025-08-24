@@ -1,0 +1,9 @@
+.header {
+    /* 100% - 5% - 5% its for padding left and padding right */
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: max(2%, 10px) 5%;
+    margin: max(2%, 10px) auto;
+}
