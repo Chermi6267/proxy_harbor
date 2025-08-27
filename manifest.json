@@ -5,11 +5,7 @@
   "description": "A simple SPA for managing my proxy settings. The main idea is that when you want to add a domain to the `with proxy` list, you can easily do it using the proxy harbor extension in Firefox. ",
   "action": {
     "default_popup": "index.html",
-    "default_icon": {
-      "16": "icons/icon-16.png",
-      "48": "icons/icon-48.png",
-      "128": "icons/icon-128.png"
-    },
+    "default_icon": "icons/icon.svg",
     "default_title": "Proxy Harbor"
   },
   "host_permissions": ["http://localhost:5550/*"],
