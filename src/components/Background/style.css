@@ -1,6 +1,0 @@
-.bg_cont {
-    width: var(--window_width);
-    height: var(--window_height);
-    overflow: hidden;
-    position: relative;
-}

@@ -1,11 +1,8 @@
-import { type chromeTab } from "types/chromeTab";
-import { useEffect, useState } from "react";
-import NavigationMenu from "components/NavigationMenu/NavigationMenu";
-import { getDomain } from "utils/getDomain";
-import MainList from "components/MainList/MainList";
-import "./style.css";
+import { ChromeTab } from "shared/types/ChromeTab";
+import { getDomain } from "../utils/getDomain";
+import { NODE_ENV } from "env";
 
-const devData: chromeTab[] = [
+const DEV_DATA: ChromeTab[] = [
   {
     id: 0,
     domain: getDomain("http://localhost:3000"),
@@ -65,34 +62,25 @@ const devData: chromeTab[] = [
   },
 ];
 
-function Main() {
-  const [tabs, setTabs] = useState<chromeTab[]>(devData);
-  const [menuState, setMenuState] = useState<string>("tabs");
-
-  useEffect(() => {
+export const fetchChromeTabs = (): Promise<ChromeTab[] | null> => {
+  return new Promise((resolve) => {
     if (typeof chrome !== "undefined" && chrome.tabs) {
       chrome.tabs.query({}, (tabs) => {
-        let validTabs = tabs.map((t) => {
-          return {
-            id: t.id || 404,
-            domain: t.url === undefined ? "fuck" : getDomain(t.url),
-            title: t.title === undefined ? "fuck" : t.title,
-          };
-        });
+        const domains: ChromeTab[] = tabs.map((t) => ({
+          id: t.id ?? 404,
+          domain: t.url ? getDomain(t.url) : "unknown",
+          title: t.title ?? "unknown",
+        }));
 
-        setTabs(validTabs);
+        console.log("Успех, domains получены");
+        resolve(domains);
       });
     } else {
       console.warn("chrome API недоступен (запусти как расширение)");
+      if (NODE_ENV === "DEV") {
+        resolve(DEV_DATA);
+      }
+      return null;
     }
-  }, []);
-
-  return (
-    <main className="main">
-      <NavigationMenu menuState={menuState} setMenuState={setMenuState} />
-      <MainList elements={tabs} />
-    </main>
-  );
-}
-
-export default Main;
+  });
+};

@@ -1,11 +1,9 @@
-import Background from "components/Background/Background";
-import Header from "components/Header/Header";
-import Main from "components/Main/Main";
+import Background from "shared/ui/Background/Background";
+import Main from "pages/Main/Main";
 
 function App() {
   return (
     <Background>
-      <Header />
       <Main />
     </Background>
   );

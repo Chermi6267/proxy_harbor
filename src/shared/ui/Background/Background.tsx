@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import RippleGrid from "components/RippleGrid/RippleGrid";
+import RippleGrid from "./RippleGrid";
 import "./style.css";
 
 function Background({ children }: { children: ReactNode }) {

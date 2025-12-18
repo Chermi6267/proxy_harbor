@@ -1,0 +1,20 @@
+.tick_btn {
+  --size: max(2vw, 32px);
+  width: var(--size);
+  height: var(--size);
+  border: 1px solid var(--border);
+  background-color: hsla(from var(--text) h s l / 0.05);
+  backdrop-filter: blur(2px);
+  margin: 0;
+  border-radius: 50%;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > * {
+    width: var(--size);
+    height: var(--size);
+    object-fit: contain;
+  }
+}

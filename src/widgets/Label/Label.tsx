@@ -1,7 +1,7 @@
-import FuzzyText from "components/FuzzyText/FuzzyText";
+import FuzzyText from "shared/ui/FuzzyText/FuzzyText";
 import "./style.css";
 
-function Header() {
+function Label() {
   return (
     <header className="header">
       <FuzzyText
@@ -16,4 +16,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Label;
