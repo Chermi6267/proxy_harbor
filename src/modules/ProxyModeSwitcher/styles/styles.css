@@ -1,0 +1,38 @@
+.switcher_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 0 15px;
+  gap: 15px;
+  position: relative;
+  overflow: visible;
+}
+
+.switcher_container::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 10px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary_highlight) 0%,
+    var(--primary_highlight) 5%,
+    var(--primary_highlight-transparent) 100%
+  );
+  opacity: 0.3;
+  bottom: -8px;
+  backdrop-filter: blur(5px);
+  z-index: 2;
+}
+
+.switcher_container::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 2px;
+  background-color: var(--primary_highlight);
+  bottom: 2px;
+  z-index: 3;
+}

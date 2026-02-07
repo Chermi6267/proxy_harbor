@@ -9,7 +9,7 @@ body {
   --text_highlight: hsla(0, 0%, 100%, 100%);
 
   --primary: hsla(72, 70%, 35%, 100%);
-  --primary_highlight: hsl(225, 70%, 50%);
+  --primary_highlight: hsl(65, 100%, 50%);
 
   --window_width: clamp(300px, 22dvw, 500px);
   --window_height: max(60dvh, 450px);
