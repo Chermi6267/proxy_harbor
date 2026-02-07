@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["chrome", "node"],
+    "types": ["chrome", "node", "jest"],
     "baseUrl": "src"
   },
   "include": ["src", "webpack.config.js"]
