@@ -92,15 +92,30 @@ export const useAcceptButtonAnimation = ({
   useGSAP(
     () => {
       if (!tlMorph.current || !tlMorphDots.current) return;
-      if (isLoading && isHover) {
-        tlMorph.current.play();
-        animateDots(false);
-      } else if (isLoading && !isHover) {
-        animateDots(true);
-        tlMorphDots.current.play();
+
+      const playMorph = () => tlMorph.current!.play();
+      const reverseMorph = () => tlMorph.current!.reverse();
+      const playDots = (show: boolean) => animateDots(show);
+      const playMorphDots = () => tlMorphDots.current!.play();
+      const updateInitialColor = (hover: boolean) => {
+        gsap.to("#initial", {
+          fill: hover ? SUB_COLOR_1 : ACCEPT_COLOR,
+          stroke: hover ? SUB_COLOR_1 : ACCEPT_COLOR,
+        });
+      };
+
+      if (isLoading) {
+        if (isHover) {
+          playMorph();
+          playDots(false);
+        } else {
+          playDots(true);
+          playMorphDots();
+        }
       } else {
-        animateDots(false);
-        tlMorph.current.reverse();
+        playDots(false);
+        reverseMorph();
+        updateInitialColor(isHover);
       }
     },
     { scope: ref, dependencies: [isLoading, isHover] },
