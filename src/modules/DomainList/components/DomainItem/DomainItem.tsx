@@ -13,11 +13,12 @@ function DomainItem(props: Omit<ChromeTab, "id">) {
   const { title, domain } = props;
   const [isOpen, setIsOpen] = useState(false);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const proxyListRef = useRef<HTMLDivElement | null>(null);
+  const domainContRef = useRef<HTMLDivElement | null>(null);
+  const proxyListRef = useRef<HTMLUListElement | null>(null);
   const [tHeight, setTHeight] = useState(0);
 
   useLayoutEffect(() => {
-    setTHeight(calculateHeight(proxyListRef));
+    setTHeight(calculateHeight(domainContRef));
   }, [isOpen]);
 
   useGSAP(
@@ -32,20 +33,30 @@ function DomainItem(props: Omit<ChromeTab, "id">) {
             duration: 1,
             ease: "expo.inOut",
           },
-          0
+          0,
         )
         .fromTo(
-          proxyListRef.current,
+          domainContRef.current,
           { height: 35 },
           {
             height: tHeight + 10, // padding
             duration: 1,
             ease: "expo.inOut",
           },
-          0
+          0,
+        )
+        .fromTo(
+          ".domain_proxy_list_item",
+          {
+            opacity: 0,
+            translateX: "-50%",
+          },
+
+          { stagger: 0.1, opacity: 1, translateX: "0%" },
+          0.5,
         );
     },
-    { scope: proxyListRef, dependencies: [tHeight] }
+    { scope: domainContRef, dependencies: [tHeight] },
   );
 
   useGSAP(() => {
@@ -59,22 +70,46 @@ function DomainItem(props: Omit<ChromeTab, "id">) {
   }, [isOpen]);
 
   return (
-    <div ref={proxyListRef} className={`domain_cont ${isOpen ? "open" : ""}`}>
+    <div ref={domainContRef} className={`domain_cont ${isOpen ? "open" : ""}`}>
       <DomainItemTitle title={domain && domain !== "" ? domain : title} />
 
-      <div className="domain_proxy_list_cont">
-        <div className="domain_proxy_list_item"></div>
-        <div className="domain_proxy_list_item"></div>
-        <div className="domain_proxy_list_item"></div>
-        <div className="domain_proxy_list_item"></div>
-        <div className="domain_proxy_list_item"></div>
-        <div className="domain_proxy_list_item"></div>
-      </div>
+      <ul ref={proxyListRef} className="domain_proxy_list_cont">
+        <li className="domain_proxy_list_item">
+          <p className="list_item__p">Proxy 1Proxy 1Proxy 1Proxy 1Proxy 1</p>
+          <AcceptButton
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className="list_item_accept_btn"
+          />
+        </li>
+
+        <li className="domain_proxy_list_item">
+          <p className="list_item__p">Proxy 2</p>
+          <AcceptButton
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className="list_item_accept_btn"
+          />
+        </li>
+
+        <li className="domain_proxy_list_item">
+          <p className="list_item__p">Proxy 3</p>
+          <AcceptButton
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className="list_item_accept_btn"
+          />
+        </li>
+      </ul>
 
       <AcceptButton
         onClick={() => {
           setIsOpen(!isOpen);
         }}
+        isLoading={isOpen}
         className="domain_accept_btn"
       />
 

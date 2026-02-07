@@ -25,7 +25,7 @@ export const calculateHeight = (navRef: RefObject<HTMLDivElement | null>) => {
   // форсированный reflow (если нужно)
   void contentEl.offsetHeight;
 
-  const topBar = 35;
+  const topBar = 45;
   const computed = getComputedStyle(contentEl);
   const paddingBottom = parseFloat(computed.paddingBottom || "0");
   const contentHeight = contentEl.scrollHeight;
