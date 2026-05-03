@@ -1,7 +1,6 @@
 import "./style.css";
-import DomainList from "modules/DomainList";
-import Label from "widgets/Label/Label";
-import { NODE_ENV } from "env";
+import DomainList from "@/modules/DomainList";
+import Label from "@/widgets/Label/Label";
 
 function Main() {
   return (

@@ -1,4 +1,4 @@
-import FuzzyText from "shared/ui/FuzzyText/FuzzyText";
+import FuzzyText from "@/shared/ui/FuzzyText/FuzzyText";
 import "./style.css";
 
 function Label() {

@@ -1,5 +1,5 @@
-import Background from "shared/ui/Background/Background";
-import Main from "pages/Main/Main";
+import Background from "@/shared/ui/Background/Background";
+import Main from "@/pages/Main/Main";
 
 function App() {
   return (

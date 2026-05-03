@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import IconButton from "./base/IconButton";
 import type { IconButtonProps } from "./types/IconButtonProps";
-import { useHover } from "shared/hooks/useHover";
+import { useHover } from "@/shared/hooks/useHover";
 import { useAcceptButtonAnimation } from "./hooks/useAcceptButtonAnimation";
 
 function AcceptButton({ isLoading, ...rest }: IconButtonProps) {

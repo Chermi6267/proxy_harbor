@@ -5,7 +5,7 @@ export const calculateHeight = (navRef: RefObject<HTMLDivElement | null>) => {
   if (!navEl) return 105;
 
   const contentEl = navEl.querySelector(
-    ".domain_proxy_list_cont"
+    ".domain_proxy_list_cont",
   ) as HTMLElement | null;
   if (!contentEl) return 105;
 

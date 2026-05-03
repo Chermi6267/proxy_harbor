@@ -1,6 +1,6 @@
-import { ChromeTab } from "shared/types/ChromeTab";
+import { ChromeTab } from "@/shared/types/ChromeTab";
 import { getDomain } from "../utils/getDomain";
-import { NODE_ENV } from "env";
+import { NODE_ENV } from "@/env";
 
 const DEV_DATA: ChromeTab[] = [
   {
@@ -27,7 +27,7 @@ const DEV_DATA: ChromeTab[] = [
   {
     id: 4,
     domain: getDomain(
-      "https://stackoverflow.com/questions/762011/whats-the-difference-between-let-and-var"
+      "https://stackoverflow.com/questions/762011/whats-the-difference-between-let-and-var",
     ),
     title:
       "javascript - What's the difference between let and var? - Stack Overflow",
@@ -35,28 +35,28 @@ const DEV_DATA: ChromeTab[] = [
   {
     id: 5,
     domain: getDomain(
-      "https://www.reddit.com/r/programming/comments/abc123/interesting_discussion_about_ai/"
+      "https://www.reddit.com/r/programming/comments/abc123/interesting_discussion_about_ai/",
     ),
     title: "Interesting discussion about AI future : programming",
   },
   {
     id: 6,
     domain: getDomain(
-      "https://twitter.com/typescript/status/1234567890123456789"
+      "https://twitter.com/typescript/status/1234567890123456789",
     ),
     title: "TypeScript on Twitter: 'New features in v5.0...'",
   },
   {
     id: 7,
     domain: getDomain(
-      "https://www.linkedin.com/jobs/view/software-engineer-at-google-1234567890"
+      "https://www.linkedin.com/jobs/view/software-engineer-at-google-1234567890",
     ),
     title: "Software Engineer at Google | LinkedIn",
   },
   {
     id: 8,
     domain: getDomain(
-      "https://www.amazon.com/gp/product/B08N5WRWNW/ref=ppx_yo_dt_b_search_asin_title"
+      "https://www.amazon.com/gp/product/B08N5WRWNW/ref=ppx_yo_dt_b_search_asin_title",
     ),
     title: "Amazon.com: Mechanical Keyboard - 65% Layout",
   },

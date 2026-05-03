@@ -1,5 +1,5 @@
 import DomainItem from "./DomainItem/DomainItem";
-import { type ChromeTab } from "shared/types/ChromeTab";
+import { type ChromeTab } from "@/shared/types/ChromeTab";
 import { useDomainStore } from "../store/domains.store";
 import { useEffect } from "react";
 
