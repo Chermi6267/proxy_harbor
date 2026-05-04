@@ -1,7 +1,6 @@
 import "./style.css";
-import Label from "widgets/Label/Label";
-import ProxyModeSwitcher from "modules/ProxyModeSwitcher";
-import ProxyDomainCarousel from "modules/ProxyDomainCarousel";
+import DomainList from "@/modules/DomainList";
+import Label from "@/widgets/Label/Label";
 
 function Main() {
   return (

@@ -252,11 +252,11 @@ void main() {
         containerRef.current.removeEventListener("mousemove", handleMouseMove);
         containerRef.current.removeEventListener(
           "mouseenter",
-          handleMouseEnter
+          handleMouseEnter,
         );
         containerRef.current.removeEventListener(
           "mouseleave",
-          handleMouseLeave
+          handleMouseLeave,
         );
       }
       renderer.gl.getExtension("WEBGL_lose_context")?.loseContext();

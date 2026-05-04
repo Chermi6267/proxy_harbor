@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
-import { ACCEPT_COLOR, DENY_COLOR, SUB_COLOR_1 } from "shared/styles/colors";
+import { ACCEPT_COLOR, DENY_COLOR, SUB_COLOR_1 } from "@/shared/styles/colors";
 
 type useAcceptButtonAnimationProps = {
   ref: React.RefObject<Element | null>;

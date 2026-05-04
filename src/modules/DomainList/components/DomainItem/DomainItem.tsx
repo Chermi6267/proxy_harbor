@@ -1,6 +1,6 @@
 import "../../styles/style.css";
-import { type ChromeTab } from "shared/types/ChromeTab";
-import AcceptButton from "shared/ui/Buttons/IconButtons/AcceptButton";
+import { type ChromeTab } from "@/shared/types/ChromeTab";
+import AcceptButton from "@/shared/ui/Buttons/IconButtons/AcceptButton";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import MorphSVGPlugin from "gsap/MorphSVGPlugin";
