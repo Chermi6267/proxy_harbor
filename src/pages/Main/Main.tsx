@@ -6,7 +6,8 @@ function Main() {
   return (
     <main className="main">
       <Label />
-      <DomainList />
+      <ProxyModeSwitcher />
+      <ProxyDomainCarousel />
     </main>
   );
 }

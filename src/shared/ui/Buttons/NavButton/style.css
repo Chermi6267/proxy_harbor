@@ -8,14 +8,18 @@
   padding: 1dvh 0;
   font-family: "Michroma", sans-serif;
   color: var(--text);
-  transition: background-color 200ms ease-in, border-color 200ms ease-in;
+  transition:
+    background-color 200ms ease-in,
+    border-color 200ms ease-in;
 }
 
 .active {
   background-color: hsla(from var(--primary) h s l / 0.2);
   border-color: var(--primary_highlight);
   color: var(--text_highlight);
-  transition: background-color 150ms ease-in-out, border-color 150ms ease,
+  transition:
+    background-color 150ms ease-in-out,
+    border-color 150ms ease,
     color 100ms ease-in;
 }
 
@@ -25,9 +29,21 @@
     background-color: hsla(from var(--primary) h s l / 0.2);
     border-color: var(--primary_highlight);
     color: var(--text_highlight);
-    transition: background-color 150ms ease-in-out, border-color 150ms ease,
+    transition:
+      background-color 150ms ease-in-out,
+      border-color 150ms ease,
       color 100ms ease-in;
   }
+}
+
+.nav_button:focus {
+  background-color: hsla(from var(--primary) h s l / 0.2);
+  border-color: var(--primary_highlight);
+  color: var(--text_highlight);
+  transition:
+    background-color 150ms ease-in-out,
+    border-color 150ms ease,
+    color 100ms ease-in;
 }
 
 .tick_btn {

@@ -7,7 +7,7 @@ function Background({ children }: { children: ReactNode }) {
     <div className="bg_cont">
       {children}
 
-      <RippleGrid
+      {/* <RippleGrid
         enableRainbow={false}
         gridColor="#B2B2B2"
         rippleIntensity={0.05}
@@ -17,7 +17,7 @@ function Background({ children }: { children: ReactNode }) {
         mouseInteractionRadius={1.2}
         opacity={0.7}
         gridRotation={45}
-      />
+      /> */}
     </div>
   );
 }
