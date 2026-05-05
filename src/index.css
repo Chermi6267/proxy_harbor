@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+@font-face {
+  font-family: "Michroma";
+  src: url("/public/Michroma-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
   --bg: hsla(0, 0%, 10%, 100%);

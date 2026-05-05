@@ -1,10 +1,10 @@
 import { api } from "@/shared/axios/axiosConfig";
-import { ProxyItem } from "../store/proxy.store";
+import { type ProxyCatalogItem } from "../store/ProxyCatalog.store";
 
 export const fetchProxies = async () => {
   try {
     const response = await api("/proxy").then((res) => {
-      return res.data as ProxyItem[];
+      return res.data as ProxyCatalogItem[];
     });
 
     return response;

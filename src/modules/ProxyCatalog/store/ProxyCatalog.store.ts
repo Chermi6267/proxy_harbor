@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { fetchProxies } from "../api/fetchProxies";
 
-export type ProxyItem = {
+export type ProxyCatalogItem = {
   id: number;
   name: string;
   url: string;
@@ -11,15 +11,15 @@ export type ProxyItem = {
   }[];
 };
 
-type ProxyStore = {
-  proxies: ProxyItem[];
-  setProxy: (proxies: ProxyItem[]) => void;
+type ProxyCatalogStore = {
+  proxies: ProxyCatalogItem[];
+  setProxy: (proxies: ProxyCatalogItem[]) => void;
   init: () => void;
 };
 
-export const useProxyListStore = create<ProxyStore>((set) => ({
+export const useProxyCatalogStore = create<ProxyCatalogStore>((set) => ({
   proxies: [],
-  setProxy: (proxies: ProxyItem[]) => set({ proxies }),
+  setProxy: (proxies: ProxyCatalogItem[]) => set({ proxies }),
   init: async () => {
     const data = await fetchProxies();
 

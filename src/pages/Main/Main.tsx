@@ -1,12 +1,12 @@
 import "./style.css";
-import ProxyDomainCarousel from "@/modules/ProxyDomainCarousel";
-import ProxyModeSwitcher from "@/modules/ProxyModeSwitcher";
-import Label from "@/widgets/Label/Label";
+import ActiveViewContainer from "@/modules/ActiveViewContainer";
+import ViewToggle from "@/modules/ViewToggle";
+import Label from "@/shared/ui/Label/Label";
 import { useEffect } from "react";
-import { useProxyListStore } from "@/modules/ProxyList";
+import { useProxyCatalogStore } from "@/modules/ProxyCatalog";
 
 function Main() {
-  const proxyStore = useProxyListStore();
+  const proxyStore = useProxyCatalogStore();
 
   useEffect(() => {
     proxyStore.init();
@@ -15,8 +15,8 @@ function Main() {
   return (
     <main className="main">
       <Label />
-      <ProxyModeSwitcher />
-      <ProxyDomainCarousel />
+      <ViewToggle />
+      <ActiveViewContainer />
     </main>
   );
 }

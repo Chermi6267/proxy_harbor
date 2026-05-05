@@ -6,11 +6,11 @@ import { useGSAP } from "@gsap/react";
 import MorphSVGPlugin from "gsap/MorphSVGPlugin";
 import { calculateHeight } from "../../utils/calculateHeight";
 import { useLayoutEffect, useRef, useState } from "react";
-import { DomainItemShell } from "./DomainItemShell";
-import { DomainItemTitle } from "./DomainItemTitle";
+import { BrowserTabShell } from "./BrowserTabShell";
+import { BrowserTabTitle } from "./BrowserTabTitle";
 import { addDomianToProxy } from "../../api/addDomainToProxy";
 
-function DomainItem(
+function BrowserTab(
   props: Omit<ChromeTab, "id"> & {
     proxies: { id: number; name: string; url: string }[];
   },
@@ -82,7 +82,7 @@ function DomainItem(
 
   return (
     <div ref={domainContRef} className={`domain_cont ${isOpen ? "open" : ""}`}>
-      <DomainItemTitle title={domain && domain !== "" ? domain : title} />
+      <BrowserTabTitle title={domain && domain !== "" ? domain : title} />
 
       <ul ref={proxyListRef} className="domain_proxy_list_cont">
         {proxies.map((proxy) => {
@@ -108,9 +108,9 @@ function DomainItem(
         className="domain_accept_btn"
       />
 
-      <DomainItemShell height={tHeight} />
+      <BrowserTabShell height={tHeight} />
     </div>
   );
 }
 
-export default DomainItem;
+export default BrowserTab;

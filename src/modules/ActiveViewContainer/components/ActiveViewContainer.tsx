@@ -1,27 +1,23 @@
-import { useProxyModeStore } from "@/modules/ProxyMode";
+import { useViewModeStore } from "@/modules/ViewMode";
 import "../styles/styles.css";
-import DomainList from "@/modules/DomainList";
+import BrowserTabs from "@/modules/BrowserTabs";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
 
-type ProxyDomainCarousel = {
-  children: React.ReactNode[];
-};
-
 const MENUS = [
   {
-    component: <DomainList />,
+    component: <BrowserTabs />,
     id: "DOMAIN",
   },
   {
-    component: <DomainList />,
+    component: <BrowserTabs />,
     id: "PROXY",
   },
 ];
 
-function ProxyDomainCarousel() {
-  const { proxyMode } = useProxyModeStore();
+function ActiveViewContainer() {
+  const { viewMode } = useViewModeStore();
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -38,7 +34,7 @@ function ProxyDomainCarousel() {
   useGSAP(
     () => {
       if (!ref.current) return;
-      const activeIndex = MENUS.findIndex((m) => m.id === proxyMode);
+      const activeIndex = MENUS.findIndex((m) => m.id === viewMode);
 
       [...ref.current.children].map((el, index) => {
         gsap.to(el, {
@@ -48,7 +44,7 @@ function ProxyDomainCarousel() {
         });
       });
     },
-    { dependencies: [proxyMode], scope: ref },
+    { dependencies: [viewMode], scope: ref },
   );
 
   return (
@@ -64,4 +60,4 @@ function ProxyDomainCarousel() {
   );
 }
 
-export default ProxyDomainCarousel;
+export default ActiveViewContainer;

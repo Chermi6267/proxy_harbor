@@ -1,8 +1,8 @@
-type DomainItemShellProps = {
+type BrowserTabShellProps = {
   height: number;
 };
 
-function DomainItemShell({ height }: DomainItemShellProps) {
+function BrowserTabShell({ height }: BrowserTabShellProps) {
   const BASE_HEIGHT = 95;
   const deltaY = height - BASE_HEIGHT;
   const pathD = `
@@ -44,4 +44,4 @@ function DomainItemShell({ height }: DomainItemShellProps) {
   );
 }
 
-export { DomainItemShell };
+export { BrowserTabShell };

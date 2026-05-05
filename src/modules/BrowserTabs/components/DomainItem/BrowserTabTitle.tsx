@@ -1,10 +1,10 @@
 import "../../styles/style.css";
 
-type DomainItemTitleProps = {
+type BrowserTabTitleProps = {
   title: string;
 };
 
-function DomainItemTitle({ title }: DomainItemTitleProps) {
+function BrowserTabTitle({ title }: BrowserTabTitleProps) {
   return (
     <div className="domain_title_cont">
       <p className="domain_title">{title}</p>
@@ -12,4 +12,4 @@ function DomainItemTitle({ title }: DomainItemTitleProps) {
   );
 }
 
-export { DomainItemTitle };
+export { BrowserTabTitle };

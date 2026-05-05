@@ -1,25 +1,25 @@
 import NavButton from "@/shared/ui/Buttons/NavButton/NavButton";
 import "../styles/styles.css";
-import { ProxyMode, useProxyModeStore } from "@/modules/ProxyMode";
+import { ViewMode, useViewModeStore } from "@/modules/ViewMode";
 
 interface INavButton {
-  type: ProxyMode;
+  type: ViewMode;
   text: string;
   onClick: () => void;
 }
 
-function ProxyModeSwitcher() {
-  const { setProxyMode, proxyMode } = useProxyModeStore();
+function ViewToggle() {
+  const { setViewMode, viewMode } = useViewModeStore();
   const NAV_BUTTONS: INavButton[] = [
     {
       type: "DOMAIN",
       text: "Domains",
-      onClick: () => setProxyMode("DOMAIN"),
+      onClick: () => setViewMode("DOMAIN"),
     },
     {
       type: "PROXY",
       text: "Proxies",
-      onClick: () => setProxyMode("PROXY"),
+      onClick: () => setViewMode("PROXY"),
     },
   ];
 
@@ -28,7 +28,8 @@ function ProxyModeSwitcher() {
       {NAV_BUTTONS.map((button) => {
         return (
           <NavButton
-            isActive={proxyMode === button.type}
+            key={button.type}
+            isActive={viewMode === button.type}
             text={button.text}
             onClick={button.onClick}
           />
@@ -38,4 +39,4 @@ function ProxyModeSwitcher() {
   );
 }
 
-export default ProxyModeSwitcher;
+export default ViewToggle;
