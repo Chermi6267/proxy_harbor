@@ -1,6 +1,6 @@
-import NavButton from "shared/ui/Buttons/NavButton/NavButton";
+import NavButton from "@/shared/ui/Buttons/NavButton/NavButton";
 import "../styles/styles.css";
-import { ProxyMode, useProxyModeStore } from "modules/ProxyMode";
+import { ProxyMode, useProxyModeStore } from "@/modules/ProxyMode";
 
 interface INavButton {
   type: ProxyMode;

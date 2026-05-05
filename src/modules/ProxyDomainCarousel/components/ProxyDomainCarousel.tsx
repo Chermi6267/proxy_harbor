@@ -1,6 +1,6 @@
-import { useProxyModeStore } from "modules/ProxyMode";
+import { useProxyModeStore } from "@/modules/ProxyMode";
 import "../styles/styles.css";
-import DomainList from "modules/DomainList";
+import DomainList from "@/modules/DomainList";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";

@@ -8,9 +8,14 @@ import { calculateHeight } from "../../utils/calculateHeight";
 import { useLayoutEffect, useRef, useState } from "react";
 import { DomainItemShell } from "./DomainItemShell";
 import { DomainItemTitle } from "./DomainItemTitle";
+import { addDomianToProxy } from "../../api/addDomainToProxy";
 
-function DomainItem(props: Omit<ChromeTab, "id">) {
-  const { title, domain } = props;
+function DomainItem(
+  props: Omit<ChromeTab, "id"> & {
+    proxies: { id: number; name: string; url: string }[];
+  },
+) {
+  const { title, domain, proxies } = props;
   const [isOpen, setIsOpen] = useState(false);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const domainContRef = useRef<HTMLDivElement | null>(null);
@@ -19,27 +24,26 @@ function DomainItem(props: Omit<ChromeTab, "id">) {
 
   useLayoutEffect(() => {
     setTHeight(calculateHeight(domainContRef));
-  }, [isOpen]);
+  }, [isOpen, proxies]);
 
   useGSAP(
     () => {
       gsap.registerPlugin(MorphSVGPlugin);
-      tlRef.current = gsap
-        .timeline({ paused: true })
-        .to(
-          "#initialPathId", // DomainItemShell
-          {
-            morphSVG: "#animatedPathId", // DomainItemShell
-            duration: 1,
-            ease: "expo.inOut",
-          },
-          0,
-        )
+
+      tlRef.current?.kill();
+
+      const tl = gsap.timeline({ paused: true });
+
+      tl.to("#initialPathId", {
+        morphSVG: "#animatedPathId",
+        duration: 1,
+        ease: "expo.inOut",
+      })
         .fromTo(
           domainContRef.current,
           { height: 35 },
           {
-            height: tHeight + 10, // padding
+            height: tHeight + 10,
             duration: 1,
             ease: "expo.inOut",
           },
@@ -49,12 +53,23 @@ function DomainItem(props: Omit<ChromeTab, "id">) {
           ".domain_proxy_list_item",
           {
             opacity: 0,
-            translateX: "-50%",
+            x: "-50%",
           },
-
-          { stagger: 0.1, opacity: 1, translateX: "0%" },
+          {
+            stagger: 0.1,
+            opacity: 1,
+            x: "0%",
+          },
           0.5,
         );
+
+      tlRef.current = tl;
+
+      if (isOpen) {
+        tl.progress(1);
+      } else {
+        tl.progress(0);
+      }
     },
     { scope: domainContRef, dependencies: [tHeight] },
   );
@@ -62,11 +77,7 @@ function DomainItem(props: Omit<ChromeTab, "id">) {
   useGSAP(() => {
     if (!tlRef.current) return;
 
-    if (isOpen) {
-      tlRef.current.play();
-    } else {
-      tlRef.current.reverse();
-    }
+    isOpen ? tlRef.current.play() : tlRef.current.reverse();
   }, [isOpen]);
 
   return (
@@ -74,35 +85,19 @@ function DomainItem(props: Omit<ChromeTab, "id">) {
       <DomainItemTitle title={domain && domain !== "" ? domain : title} />
 
       <ul ref={proxyListRef} className="domain_proxy_list_cont">
-        <li className="domain_proxy_list_item">
-          <p className="list_item__p">Proxy 1Proxy 1Proxy 1Proxy 1Proxy 1</p>
-          <AcceptButton
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-            className="list_item_accept_btn"
-          />
-        </li>
-
-        <li className="domain_proxy_list_item">
-          <p className="list_item__p">Proxy 2</p>
-          <AcceptButton
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-            className="list_item_accept_btn"
-          />
-        </li>
-
-        <li className="domain_proxy_list_item">
-          <p className="list_item__p">Proxy 3</p>
-          <AcceptButton
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-            className="list_item_accept_btn"
-          />
-        </li>
+        {proxies.map((proxy) => {
+          return (
+            <li key={proxy.url} className="domain_proxy_list_item">
+              <p className="list_item__p">{proxy.name}</p>
+              <AcceptButton
+                onClick={async () => {
+                  await addDomianToProxy(domain, proxy.id);
+                }}
+                className="list_item_accept_btn"
+              />
+            </li>
+          );
+        })}
       </ul>
 
       <AcceptButton

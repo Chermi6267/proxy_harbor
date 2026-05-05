@@ -6,6 +6,7 @@
     "@gsap/react": "^2.1.2",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.16.0",
     "dotenv-webpack": "^8.1.1",
     "gsap": "^3.14.2",
     "ogl": "^1.0.11",
