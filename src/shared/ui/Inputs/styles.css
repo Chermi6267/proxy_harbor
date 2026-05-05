@@ -1,0 +1,28 @@
+.bottom-border-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  margin: 8px 0px;
+  padding-left: 8px;
+  font-size: 0.85rem;
+  outline: none;
+  width: calc(100% - 8px);
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  color: var(--text_highlight);
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+}
+
+.bottom-border-input:focus {
+  border-bottom-color: var(--primary_highlight);
+}
+
+.bottom-border-input::placeholder {
+  color: var(--text);
+}
+
+.bottom-border-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

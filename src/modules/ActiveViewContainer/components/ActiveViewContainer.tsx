@@ -4,6 +4,8 @@ import BrowserTabs from "@/modules/BrowserTabs";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
+import AddProxyMenu from "@/modules/AddProxyMenu";
+import { Toaster } from "react-hot-toast";
 
 const MENUS = [
   {
@@ -11,7 +13,12 @@ const MENUS = [
     id: "DOMAIN",
   },
   {
-    component: <BrowserTabs />,
+    component: (
+      <>
+        <AddProxyMenu />
+        <BrowserTabs />
+      </>
+    ),
     id: "PROXY",
   },
 ];

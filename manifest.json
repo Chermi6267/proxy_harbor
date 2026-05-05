@@ -8,6 +8,6 @@
     "default_icon": "icons/icon.svg",
     "default_title": "Proxy Harbor"
   },
-  "host_permissions": ["http://localhost:5550/*"],
+  "host_permissions": ["http://localhost:5550/*", "http://localhost:5551/*"],
   "permissions": ["tabs", "activeTab"]
 }
