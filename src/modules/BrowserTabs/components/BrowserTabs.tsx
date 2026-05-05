@@ -1,5 +1,5 @@
 import Br from "./DomainItem/BrowserTab";
-import { type ChromeTab } from "@/shared/types/ChromeTab";
+import { type ChromeTab } from "@/pages/shared/types/ChromeTab";
 import { useDomainStore } from "../store/BrowserTabs.store";
 import { useEffect } from "react";
 import { useProxyCatalogStore } from "@/modules/ProxyCatalog";

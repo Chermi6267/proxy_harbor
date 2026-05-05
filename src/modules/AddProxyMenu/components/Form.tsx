@@ -1,10 +1,12 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { DefaultInput } from "@/shared/ui/Inputs/defaultInput";
+import { DefaultInput } from "@/shared/ui/Inputs/DefaultInput";
 import "../styles/styles.css";
 import NavButton from "@/shared/ui/Buttons/NavButton/NavButton";
 import toast from "react-hot-toast";
 import { ProxyFormData } from "../types";
 import { addProxy } from "../api/addProxy";
+import { errorHander, successHander } from "@/shared/hotToast/handlers";
+import { useStoresUpdate } from "@/modules/StoresUpdater";
 
 interface FormProps {}
 
@@ -14,6 +16,7 @@ export default function Form({}: FormProps) {
     url: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const { update } = useStoresUpdate();
 
   const handleInputChange =
     (field: keyof ProxyFormData) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -30,10 +33,10 @@ export default function Form({}: FormProps) {
         url: formData.url,
       });
 
-      toast.success("Success");
-      
+      successHander();
+      update();
     } catch (err) {
-      toast.error("Error");
+      errorHander();
       console.error("Submit error:", err);
     } finally {
       setIsLoading(false);

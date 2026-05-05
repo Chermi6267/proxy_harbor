@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { ChromeTab } from "@/shared/types/ChromeTab";
+import type { ChromeTab } from "@/pages/shared/types/ChromeTab";
 import { fetchChromeTabs } from "../api/fetchChromeTabs";
 
 type BrowserTabsStore = {

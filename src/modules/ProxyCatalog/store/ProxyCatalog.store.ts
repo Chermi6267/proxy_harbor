@@ -1,15 +1,6 @@
 import { create } from "zustand";
 import { fetchProxies } from "../api/fetchProxies";
-
-export type ProxyCatalogItem = {
-  id: number;
-  name: string;
-  url: string;
-  domains: {
-    id: number;
-    domain: string;
-  }[];
-};
+import { type ProxyCatalogItem } from "../types";
 
 type ProxyCatalogStore = {
   proxies: ProxyCatalogItem[];

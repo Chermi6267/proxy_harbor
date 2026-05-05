@@ -4,8 +4,7 @@ import BrowserTabs from "@/modules/BrowserTabs";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
-import AddProxyMenu from "@/modules/AddProxyMenu";
-import { Toaster } from "react-hot-toast";
+import ProxyCatalog from "@/modules/ProxyCatalog";
 
 const MENUS = [
   {
@@ -15,8 +14,7 @@ const MENUS = [
   {
     component: (
       <>
-        <AddProxyMenu />
-        <BrowserTabs />
+        <ProxyCatalog />
       </>
     ),
     id: "PROXY",

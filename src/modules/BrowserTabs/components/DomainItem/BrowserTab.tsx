@@ -4,11 +4,13 @@ import AcceptButton from "@/shared/ui/Buttons/IconButtons/AcceptButton";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import MorphSVGPlugin from "gsap/MorphSVGPlugin";
-import { calculateHeight } from "../../utils/calculateHeight";
+import { calculateHeight } from "@/shared/utils/calculateHeight";
 import { useLayoutEffect, useRef, useState } from "react";
 import { BrowserTabShell } from "./BrowserTabShell";
 import { BrowserTabTitle } from "./BrowserTabTitle";
 import { addDomianToProxy } from "../../api/addDomainToProxy";
+import { errorHander, successHander } from "@/shared/hotToast/handlers";
+import { useStoresUpdate } from "@/modules/StoresUpdater";
 
 function BrowserTab(
   props: Omit<ChromeTab, "id"> & {
@@ -19,11 +21,11 @@ function BrowserTab(
   const [isOpen, setIsOpen] = useState(false);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const domainContRef = useRef<HTMLDivElement | null>(null);
-  const proxyListRef = useRef<HTMLUListElement | null>(null);
   const [tHeight, setTHeight] = useState(0);
+  const { update } = useStoresUpdate();
 
   useLayoutEffect(() => {
-    setTHeight(calculateHeight(domainContRef));
+    setTHeight(calculateHeight(domainContRef, ".domain_proxy_list_cont"));
   }, [isOpen, proxies]);
 
   useGSAP(
@@ -84,14 +86,21 @@ function BrowserTab(
     <div ref={domainContRef} className={`domain_cont ${isOpen ? "open" : ""}`}>
       <BrowserTabTitle title={domain && domain !== "" ? domain : title} />
 
-      <ul ref={proxyListRef} className="domain_proxy_list_cont">
+      <ul className="domain_proxy_list_cont">
         {proxies.map((proxy) => {
           return (
             <li key={proxy.url} className="domain_proxy_list_item">
               <p className="list_item__p">{proxy.name}</p>
               <AcceptButton
                 onClick={async () => {
-                  await addDomianToProxy(domain, proxy.id);
+                  await addDomianToProxy(domain, proxy.id)
+                    .then((res) => {
+                      successHander();
+                      update();
+                    })
+                    .catch((error) => {
+                      errorHander();
+                    });
                 }}
                 className="list_item_accept_btn"
               />

@@ -1,12 +1,13 @@
 import { RefObject } from "react";
 
-export const calculateHeight = (navRef: RefObject<HTMLDivElement | null>) => {
+export const calculateHeight = (
+  navRef: RefObject<HTMLDivElement | null>,
+  subQuerySelector: string,
+) => {
   const navEl = navRef.current;
   if (!navEl) return 105;
 
-  const contentEl = navEl.querySelector(
-    ".domain_proxy_list_cont",
-  ) as HTMLElement | null;
+  const contentEl = navEl.querySelector(subQuerySelector) as HTMLElement | null;
   if (!contentEl) return 105;
 
   // если элемент скрыт или позиционирован — временно делаем его измеряемым

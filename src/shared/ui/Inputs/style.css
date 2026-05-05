@@ -2,16 +2,15 @@
   background: transparent;
   border: none;
   border-bottom: 2px solid var(--border);
-  margin: 8px 0px;
-  padding-left: 8px;
-  font-size: 0.85rem;
+  padding: 5px 0;
+  padding-left: 10px;
   outline: none;
-  width: calc(100% - 8px);
+  width: calc(100% - 10px);
   transition: border-color 0.2s ease;
   box-sizing: border-box;
-  color: var(--text_highlight);
+  color: inherit;
   font-family: "Michroma", sans-serif;
-  font-weight: 400;
+  font-size: 0.85rem;
 }
 
 .bottom-border-input:focus {
