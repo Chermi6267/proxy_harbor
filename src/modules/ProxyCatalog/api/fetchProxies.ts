@@ -1,5 +1,5 @@
 import { api } from "@/shared/axios/axiosConfig";
-import { type ProxyCatalogItem } from "../store/ProxyCatalog.store";
+import { type ProxyCatalogItem } from "../types";
 
 export const fetchProxies = async () => {
   try {

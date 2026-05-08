@@ -17,8 +17,11 @@ body {
   --primary: hsla(72, 70%, 35%, 100%);
   --primary_highlight: hsl(65, 100%, 50%);
 
-  --window_width: clamp(300px, 22dvw, 500px);
-  --window_height: max(60dvh, 450px);
+  --accept: #65cc65;
+  --deny: #ff3d74ff;
+
+  --window_width: 300px;
+  --window_height: 500px;
 
   font-family: "Michroma", sans-serif;
   font-weight: 400;

@@ -1,1 +1,1 @@
-export { default } from "./components/ProxyModeSwitcher";
+export { default } from "./components/ViewToggle";

@@ -1,5 +1,5 @@
 .tick_btn {
-  --size: max(2vw, 32px);
+  --size: 32px;
   width: var(--size);
   height: var(--size);
   border: 1px solid var(--border);

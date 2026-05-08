@@ -7,11 +7,12 @@ export const addDomianToProxy = async (domain: string, proxyId: number) => {
         domain: domain,
       })
       .then((res) => {
-        console.log(res.data);
+        return res;
       });
 
     return response;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };

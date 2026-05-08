@@ -4,6 +4,7 @@ import BrowserTabs from "@/modules/BrowserTabs";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
+import ProxyCatalog from "@/modules/ProxyCatalog";
 
 const MENUS = [
   {
@@ -11,7 +12,11 @@ const MENUS = [
     id: "DOMAIN",
   },
   {
-    component: <BrowserTabs />,
+    component: (
+      <>
+        <ProxyCatalog />
+      </>
+    ),
     id: "PROXY",
   },
 ];

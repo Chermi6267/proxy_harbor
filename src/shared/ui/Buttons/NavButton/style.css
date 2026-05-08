@@ -46,7 +46,7 @@
     color 100ms ease-in;
 }
 
-.tick_btn {
+/* .tick_btn {
   --size: max(3vw, 32px);
 
   width: var(--size);
@@ -68,4 +68,4 @@
     height: var(--size);
     object-fit: contain;
   }
-}
+} */

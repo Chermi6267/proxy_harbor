@@ -133,10 +133,10 @@
 }
 
 .domain_proxy_list_item::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: -2px;
-  top: -2px
+  top: -2px;
 }
 
 .list_item_accept_btn {
