@@ -21,21 +21,13 @@ Built as a **Firefox extension (Manifest V3)** with a modern React + Vite stack.
 
 ## 🖼️ Screenshots
 
-### Proxy management
+|                   Tabs                    | Tabs management                                 |
+| :---------------------------------------: | ----------------------------------------------- |
+| ![Main View](./docs/screenshots/tabs.png) | ![Main View](./docs/screenshots/tabsActive.png) |
 
-![Proxy list](docs/screenshots/proxies.png)
-
-### Active proxies
-
-![Active proxies](docs/screenshots/proxiesActive.png)
-
-### Browser tabs integration
-
-![Tabs](docs/screenshots/tabs.png)
-
-### Active tab view
-
-![Active tabs](docs/screenshots/tabsActive.png)
+|                   Proxies                    | Proxies management                                 |
+| :------------------------------------------: | -------------------------------------------------- |
+| ![Main View](./docs/screenshots/proxies.png) | ![Main View](./docs/screenshots/proxiesActive.png) |
 
 ---
 
